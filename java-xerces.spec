@@ -12,8 +12,9 @@ License:	Apache Software License
 URL:		http://xml.apache.org/xerces-j
 Source0:	http://xml.apache.org/xerces-j/dist/Xerces-J-src.%{version}.tar.gz
 BuildArch:	noarch
-BuildRequires:	/usr/bin/jar
+BuildRequires:	jar
 BuildRequires:	jikes
+Requires:	java
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_javaclassdir	%{_datadir}/java/classes
