@@ -1,18 +1,15 @@
 Summary:	XML parser for Java
 Summary(pl):	Analizator sk³adniowy XML-a napisany w Javie
 Name:		xerces-j
-Version:	2.4.0
+Version:	2.6.2
 Release:	1
 License:	Apache
 Group:		Applications/Publishing/XML/Java
-Source0:	http://xml.apache.org/dist/xerces-j/Xerces-J-src.%{version}.tar.gz
-# Source0-md5:	7b4ceb6cf1d66037be7221901d9c4143
+Source0:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-src.%{version}.tar.gz
+# Source0-md5:	cfd536b8d72f8ebe3465ae35f5e3775d
 # Get Xercej-J-tools to avoid Requires: xerces-j
-Source1:	http://xml.apache.org/dist/xerces-j/Xerces-J-tools.%{version}.tar.gz
-# Source1-md5:	09e18250116de58e0539d110c3fd6cc7
-Patch0:		%{name}-jdk14.patch
-Patch1:		%{name}-manifest.patch
-Patch2:		%{name}-jdk1.4.2.patch
+Source1:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-tools.%{version}.tar.gz
+# Source1-md5:	55ba4b71ae95acf7d50c4bc0d796ee76
 URL:		http://xml.apache.org/xerces-j/
 BuildRequires:	jdk >= 1.1
 BuildRequires:	jakarta-ant >= 1.5
@@ -43,11 +40,7 @@ Documentation for Xerces-J - XML parser for Java.
 Dokumentacja do Xercesa-J - analizatora sk³adniowego XML-a w Javie.
 
 %prep
-%setup -q -n xerces-%(echo %{version} | tr . _)
-%patch0 -p1
-%patch1 -p1
-%patch2	-p1
-gzip -dc %{SOURCE1} | tar -x
+%setup -q -n xerces-%(echo %{version} | tr . _) -a1
 
 %build
 JAVA_HOME=/usr/lib/java
