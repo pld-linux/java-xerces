@@ -7,8 +7,9 @@ Name:		xerces-j
 Version:	%{major}.%{minor}.%{micro}
 %define ver	%{major}_%{minor}_%{micro}
 Release:	1
-Group:		Development/Libraries
-License:	Apache Software License
+Group:		Applications/Publishing/XML/Java
+Group(de):	Applikationen/Publizieren/XML/Java
+Group(pl):	Aplikacje/Publikowanie/XML/Java
 URL:		http://xml.apache.org/xerces-j
 Source0:	http://xml.apache.org/xerces-j/dist/Xerces-J-src.%{version}.tar.gz
 BuildArch:	noarch
