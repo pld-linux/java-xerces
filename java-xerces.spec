@@ -31,6 +31,17 @@ XML parser for Java.
 %description -l pl
 Parser XML napisany w Javie.
 
+%package doc
+Summary:	Documentation for Xerces-J - XML parser for Java
+Summary(pl):	Dokumentacja do Xercesa-J - parsera XML w Javie
+Group:		Documentation
+
+%description doc
+Documentation for Xerces-J - XML parser for Java.
+
+%description doc -l pl
+Dokumentacja do Xercesa-J - parsera XML w Javie.
+
 %prep
 %setup -q -n xerces-%(echo %{version} | tr . _)
 %patch0 -p1
@@ -58,5 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README Readme.html LICENSE STATUS build/docs/javadocs/*
+%doc README Readme.html LICENSE STATUS
 %{_javalibdir}/*.jar
+
+%files doc
+%defattr(644,root,root,755)
+%doc build/docs/javadocs/*
