@@ -1,24 +1,18 @@
-%define	major	1
-%define	minor	4
-%define	micro	4
-
 Summary:	XML parser for Java
 Summary(pl):	Parser XML napisany w Javie
 Name:		xerces-j
-Version:	%{major}.%{minor}.%{micro}
+Version:	1.4.4
 Release:	4
 License:	Apache
 Group:		Applications/Publishing/XML/Java
-URL:		http://xml.apache.org/xerces-j
 Source0:	http://xml.apache.org/xerces-j/dist/Xerces-J-src.%{version}.tar.gz
+URL:		http://xml.apache.org/xerces-j/
+BuildRequires:	jdk >= 1.1
+Requires:	jre >= 1.1
 BuildArch:	noarch
-BuildRequires:	jdk
-Requires:	jre
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		ver				%{major}_%{minor}_%{micro}
-%define		_javaclassdir		/usr/share/java/
-%define		jredir			%{_libdir}/java/jre/lib
+%define		_javaclassdir	/usr/share/java
 
 %description
 XML parser for Java.
@@ -27,7 +21,7 @@ XML parser for Java.
 Parser XML napisany w Javie.
 
 %prep
-%setup -q -n xerces-%{ver}
+%setup -q -n xerces-%(echo %{version} | tr . _)
 
 %build
 %{__make} JAVAC="javac -O" jars
@@ -43,5 +37,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README Readme.html LICENSE STATUS docs/* docs/dtd
+%doc README Readme.html LICENSE STATUS docs/*
 %{_javaclassdir}/xerces.jar
