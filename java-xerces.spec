@@ -7,7 +7,7 @@ Summary:	XML parser for Java
 Summary(pl):	Parser XML napisany w Javie
 Name:		xerces-j
 Version:	%{major}.%{minor}.%{micro}
-Release:	2
+Release:	3
 License:	Apache Software License
 Group:		Applications/Publishing/XML/Java
 URL:		http://xml.apache.org/xerces-j
@@ -18,8 +18,8 @@ Requires:	jre
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		ver				%{major}_%{minor}_%{micro}
-%define		_javaclassdir	%{_libdir}/java/
-%define		jredir			%{_libdir}/java-sdk/jre/lib
+%define		_javaclassdir		/usr/share/java/
+%define		jredir			%{_libdir}/java/jre/lib
 
 %description
 XML parser for Java.
