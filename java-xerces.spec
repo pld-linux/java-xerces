@@ -2,7 +2,7 @@ Summary:	XML parser for Java
 Summary(pl):	Parser XML napisany w Javie
 Name:		xerces-j
 %define	major	1
-%define	minor	1
+%define	minor	4
 %define	micro	3
 Version:	%{major}.%{minor}.%{micro}
 %define ver	%{major}_%{minor}_%{micro}
@@ -20,7 +20,7 @@ Requires:	jre
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_javaclassdir	%{_datadir}/java/classes
-%define		jredir		%{_libdir}/jre
+%define		jredir		/usr/lib/java-sdk/jre/lib
 
 %description
 XML parser for Java.
@@ -32,7 +32,7 @@ Parser XML napisany w Javie.
 %setup -q -n xerces-%{ver}
 
 %build
-export CLASSPATH=%{jredir}/lib/rt.jar
+export CLASSPATH=%{jredir}/rt.jar
 %{__make} JAVAC=jikes jars
 
 %install
