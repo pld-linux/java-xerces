@@ -20,10 +20,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		jredir		%{_libdir}/jre
 
 %description
-N/A
+XML parser for Java.
 
 %description -l pl
-N/A
+Parser XML napisany w Javie.
 
 %prep
 %setup -q -n xerces-%{ver}
@@ -34,16 +34,16 @@ export CLASSPATH=%{jredir}/lib/rt.jar
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_javaclassdir}
+
 install bin/xerces.jar $RPM_BUILD_ROOT%{_javaclassdir}
+
 gzip -9nf README Readme.html LICENSE STATUS
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc {README,Readme.html,LICENSE,STATUS}.gz docs/* docs/dtd
 %{_javaclassdir}/xerces.jar
-
-
-%clean
-rm -rf $RPM_BUILD_ROOT
