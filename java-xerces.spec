@@ -20,7 +20,7 @@ Provides:	jaxp_parser_impl
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_javalibdir	/usr/share/java
+%define		_javalibdir	%{_datadir}/java
 
 %description
 XML parser for Java.
@@ -43,7 +43,7 @@ Dokumentacja do Xercesa-J - analizatora sk³adniowego XML-a w Javie.
 %setup -q -n xerces-%(echo %{version} | tr . _) -a1
 
 %build
-JAVA_HOME=/usr/lib/java
+JAVA_HOME=%{_libdir}/java
 CLASSPATH=./tools/xercesImpl.jar
 CLASSPATH=./tools/bin/xjavac.jar:$CLASSPATH
 CLASSPATH=%{_javalibdir}/xml-commons-apis.jar:$CLASSPATH
