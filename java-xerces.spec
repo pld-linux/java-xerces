@@ -14,7 +14,7 @@ Source0:	http://xml.apache.org/xerces-j/dist/Xerces-J-src.%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	jar
 BuildRequires:	jikes
-Requires:	java
+Requires:	jre
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_javaclassdir	%{_datadir}/java/classes
