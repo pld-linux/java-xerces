@@ -6,6 +6,7 @@ Release:	4
 License:	Apache
 Group:		Applications/Publishing/XML/Java
 Source0:	http://xml.apache.org/xerces-j/dist/Xerces-J-src.%{version}.tar.gz
+# Source0-md5:	ad6b0450c2efd519ce16514e7137a498
 URL:		http://xml.apache.org/xerces-j/
 BuildRequires:	jdk >= 1.1
 Requires:	jre >= 1.1
