@@ -10,10 +10,6 @@ Version:	%{major}.%{minor}.%{micro}
 Release:	2
 License:	Apache Software License
 Group:		Applications/Publishing/XML/Java
-Group(de):	Applikationen/Publizieren/XML/Java
-Group(es):	Aplicaciones/Editoración/XML/Java
-Group(pl):	Aplikacje/Publikowanie/XML/Java
-Group(pt_BR):	Aplicações/Editoração/XML/Java
 URL:		http://xml.apache.org/xerces-j
 Source0:	http://xml.apache.org/xerces-j/dist/Xerces-J-src.%{version}.tar.gz
 BuildArch:	noarch
