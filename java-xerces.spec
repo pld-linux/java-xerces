@@ -10,6 +10,7 @@ Release:	1
 Group:		Development/Libraries
 Source0:	Xerces-J-src.%{version}.tar.gz
 Copyright:	GPL
+BuildArch:	noarch
 BuildRequires:	/usr/bin/jar
 BuildRequires:	jikes
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
