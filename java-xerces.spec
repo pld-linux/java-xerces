@@ -7,6 +7,7 @@ Name:		xerces-j
 Version:	%{major}.%{minor}.%{micro}
 %define ver	%{major}_%{minor}_%{micro}
 Release:	1
+License:	??
 Group:		Applications/Publishing/XML/Java
 Group(de):	Applikationen/Publizieren/XML/Java
 Group(pl):	Aplikacje/Publikowanie/XML/Java
