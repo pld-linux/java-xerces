@@ -1,5 +1,5 @@
 Summary:	XML parser for Java
-Summary(pl):	Parser XML napisany w Javie
+Summary(pl):	Analizator sk³adniowy XML-a napisany w Javie
 Name:		xerces-j
 Version:	2.4.0
 Release:	1
@@ -29,18 +29,18 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 XML parser for Java.
 
 %description -l pl
-Parser XML napisany w Javie.
+Analizator sk³adniowy XML-a napisany w Javie.
 
 %package doc
 Summary:	Documentation for Xerces-J - XML parser for Java
-Summary(pl):	Dokumentacja do Xercesa-J - parsera XML w Javie
+Summary(pl):	Dokumentacja do Xercesa-J - analizatora sk³adniowego XML-a w Javie
 Group:		Documentation
 
 %description doc
 Documentation for Xerces-J - XML parser for Java.
 
 %description doc -l pl
-Dokumentacja do Xercesa-J - parsera XML w Javie.
+Dokumentacja do Xercesa-J - analizatora sk³adniowego XML-a w Javie.
 
 %prep
 %setup -q -n xerces-%(echo %{version} | tr . _)
