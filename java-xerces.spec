@@ -1,4 +1,3 @@
-
 %define	major	1
 %define	minor	4
 %define	micro	4
@@ -7,8 +6,8 @@ Summary:	XML parser for Java
 Summary(pl):	Parser XML napisany w Javie
 Name:		xerces-j
 Version:	%{major}.%{minor}.%{micro}
-Release:	3
-License:	Apache Software License
+Release:	4
+License:	Apache
 Group:		Applications/Publishing/XML/Java
 URL:		http://xml.apache.org/xerces-j
 Source0:	http://xml.apache.org/xerces-j/dist/Xerces-J-src.%{version}.tar.gz
@@ -39,12 +38,10 @@ install -d $RPM_BUILD_ROOT%{_javaclassdir}
 
 install bin/xerces.jar $RPM_BUILD_ROOT%{_javaclassdir}
 
-gzip -9nf README Readme.html LICENSE STATUS
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {README,Readme.html,LICENSE,STATUS}.gz docs/* docs/dtd
+%doc README Readme.html LICENSE STATUS docs/* docs/dtd
 %{_javaclassdir}/xerces.jar
