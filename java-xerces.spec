@@ -12,7 +12,7 @@ Source1:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-tools.%{version}.tar.g
 # Source1-md5:	55ba4b71ae95acf7d50c4bc0d796ee76
 URL:		http://xml.apache.org/xerces-j/
 BuildRequires:	jdk >= 1.1
-BuildRequires:	jakarta-ant >= 1.5
+BuildRequires:	ant >= 1.5
 BuildRequires:	xml-commons
 Requires:	jre >= 1.1
 Requires:	xml-commons
