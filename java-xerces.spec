@@ -4,7 +4,9 @@ Summary(pl):	Analizator sk³adniowy XML-a napisany w Javie
 Name:		xerces-j
 Version:	2.8.0
 Release:	1
-License:	Apache v1.1
+# appears that portions of the code are on other licenses.
+# can it all be called "apache 2.0"?
+License:	Apache v2.0
 Group:		Applications/Publishing/XML/Java
 Source0:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-src.%{version}.tar.gz
 # Source0-md5:	162d481e901a302eb82eb40ebeb8653e
@@ -63,7 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README Readme.html STATUS
+%doc ISSUES NOTICE README Readme.html STATUS TODO
 %{_javadir}/*.jar
 
 %files doc
