@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.java
 Summary:	XML parser for Java
 Summary(pl):	Analizator sk³adniowy XML-a napisany w Javie
 Name:		xerces-j
@@ -14,8 +13,9 @@ Source0:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-src.%{version}.tar.gz
 Source1:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-tools.%{version}.tar.gz
 # Source1-md5:	4206f318b43654552f16a9040bdfa6b4
 URL:		http://xml.apache.org/xerces-j/
-BuildRequires:	jdk >= 1.1
 BuildRequires:	ant >= 1.5
+BuildRequires:	jdk >= 1.1
+BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	xml-commons
 Requires:	jre >= 1.1
 Requires:	xml-commons
