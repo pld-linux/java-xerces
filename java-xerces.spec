@@ -1,9 +1,10 @@
+%include	/usr/lib/rpm/macros.java
 Summary:	XML parser for Java
 Summary(pl):	Analizator sk³adniowy XML-a napisany w Javie
 Name:		xerces-j
 Version:	2.6.2
 Release:	1
-License:	Apache
+License:	Apache v1.1
 Group:		Applications/Publishing/XML/Java
 Source0:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-src.%{version}.tar.gz
 # Source0-md5:	cfd536b8d72f8ebe3465ae35f5e3775d
@@ -19,8 +20,6 @@ Requires:	xml-commons
 Provides:	jaxp_parser_impl
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_javalibdir	%{_datadir}/java
 
 %description
 XML parser for Java.
@@ -43,27 +42,29 @@ Dokumentacja do Xercesa-J - analizatora sk³adniowego XML-a w Javie.
 %setup -q -n xerces-%(echo %{version} | tr . _) -a1
 
 %build
-JAVA_HOME=%{_libdir}/java
-CLASSPATH=./tools/xercesImpl.jar
-CLASSPATH=./tools/bin/xjavac.jar:$CLASSPATH
-CLASSPATH=%{_javalibdir}/xml-commons-apis.jar:$CLASSPATH
-export JAVA_HOME CLASSPATH
-ant clean jars javadocs
+CLASSPATH="./tools/xercesImpl.jar:./tools/bin/xjavac.jar"
+required_jars='xml-commons-apis'
+export CLASSPATH="$CLASSPATH:`/usr/bin/build-classpath $required_jars`"
+export JAVA_HOME=%{java_home}
+export JAVAC=%{javac}
+export JAVA=%{java}
+
+%{ant} clean jars javadocs
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_javalibdir}
+install -d $RPM_BUILD_ROOT%{_javadir}
 
-install build/xerces*.jar $RPM_BUILD_ROOT%{_javalibdir}
-ln -sf xercesImpl.jar $RPM_BUILD_ROOT%{_javalibdir}/jaxp_parser_impl.jar
+install build/xerces*.jar $RPM_BUILD_ROOT%{_javadir}
+ln -sf  xercesImpl.jar    $RPM_BUILD_ROOT%{_javadir}/jaxp_parser_impl.jar
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README Readme.html LICENSE STATUS
-%{_javalibdir}/*.jar
+%doc README Readme.html STATUS
+%{_javadir}/*.jar
 
 %files doc
 %defattr(644,root,root,755)
