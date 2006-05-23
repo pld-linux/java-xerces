@@ -2,15 +2,15 @@
 Summary:	XML parser for Java
 Summary(pl):	Analizator sk³adniowy XML-a napisany w Javie
 Name:		xerces-j
-Version:	2.6.2
+Version:	2.8.0
 Release:	1
 License:	Apache v1.1
 Group:		Applications/Publishing/XML/Java
 Source0:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-src.%{version}.tar.gz
-# Source0-md5:	cfd536b8d72f8ebe3465ae35f5e3775d
+# Source0-md5:	162d481e901a302eb82eb40ebeb8653e
 # Get Xercej-J-tools to avoid Requires: xerces-j
 Source1:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-tools.%{version}.tar.gz
-# Source1-md5:	55ba4b71ae95acf7d50c4bc0d796ee76
+# Source1-md5:	4206f318b43654552f16a9040bdfa6b4
 URL:		http://xml.apache.org/xerces-j/
 BuildRequires:	jdk >= 1.1
 BuildRequires:	ant >= 1.5
