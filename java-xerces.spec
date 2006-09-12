@@ -51,7 +51,7 @@ export JAVA_HOME=%{java_home}
 export JAVAC=%{javac}
 export JAVA=%{java}
 
-%{ant} clean jars javadocs
+%ant clean jars javadocs
 
 %install
 rm -rf $RPM_BUILD_ROOT
