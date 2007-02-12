@@ -1,5 +1,5 @@
 Summary:	XML parser for Java
-Summary(pl.UTF-8):   Analizator składniowy XML-a napisany w Javie
+Summary(pl.UTF-8):	Analizator składniowy XML-a napisany w Javie
 Name:		xerces-j
 Version:	2.9.0
 Release:	1
@@ -32,7 +32,7 @@ Analizator składniowy XML-a napisany w Javie.
 
 %package doc
 Summary:	Documentation for Xerces-J - XML parser for Java
-Summary(pl.UTF-8):   Dokumentacja do Xercesa-J - analizatora składniowego XML-a w Javie
+Summary(pl.UTF-8):	Dokumentacja do Xercesa-J - analizatora składniowego XML-a w Javie
 Group:		Documentation
 
 %description doc
