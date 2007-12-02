@@ -1,3 +1,4 @@
+%include	/usr/lib/rpm/macros.java
 Summary:	XML parser for Java
 Summary(pl.UTF-8):	Analizator składniowy XML-a napisany w Javie
 Name:		xerces-j
@@ -16,6 +17,7 @@ URL:		http://xml.apache.org/xerces-j/
 BuildRequires:	ant >= 1.5
 BuildRequires:	jdk >= 1.1
 BuildRequires:	jpackage-utils
+BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	xml-commons
 Requires:	jre >= 1.1
@@ -45,21 +47,17 @@ Dokumentacja do Xercesa-J - analizatora składniowego XML-a w Javie.
 %setup -q -n xerces-%(echo %{version} | tr . _) -a1
 
 %build
-CLASSPATH="./tools/xercesImpl.jar:./tools/bin/xjavac.jar"
 required_jars='xml-commons-apis'
-export CLASSPATH="$CLASSPATH:`/usr/bin/build-classpath $required_jars`"
-export JAVA_HOME=%{java_home}
-export JAVAC=%{javac}
-export JAVA=%{java}
+export CLASSPATH=$(build-classpath $required_jars):./tools/xercesImpl.jar:./tools/bin/xjavac.jar
 
 %ant clean jars javadocs
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_javadir}
-
-install build/xercesImpl.jar $RPM_BUILD_ROOT%{_javadir}
-ln -sf xercesImpl.jar $RPM_BUILD_ROOT%{_javadir}/jaxp_parser_impl.jar
+cp -a build/xercesImpl.jar $RPM_BUILD_ROOT%{_javadir}/xerces-j2-%{version}.jar
+ln -sf xerces-j2-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/jaxp_parser_impl.jar
+ln -sf xerces-j2-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/xercesImpl.jar
 
 %clean
 rm -rf $RPM_BUILD_ROOT
