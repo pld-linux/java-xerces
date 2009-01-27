@@ -16,12 +16,11 @@ Source1:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-tools.%{version}.tar.g
 Patch0:		%{name}-target.patch
 URL:		http://xml.apache.org/xerces-j/
 BuildRequires:	ant >= 1.5
-BuildRequires:	jdk >= 1.1
+BuildRequires:	jdk >= 1.3
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	xml-commons
-Requires:	jre >= 1.1
 Requires:	xml-commons
 Provides:	jaxp_parser_impl
 BuildArch:	noarch
