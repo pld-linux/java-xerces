@@ -16,7 +16,7 @@ Source0:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-src.%{version}.tar.gz
 # Get Xerces-J-tools to avoid BuildRequires: xerces-j
 Source1:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-tools.%{version}.tar.gz
 # Source1-md5:	79d48733b0ab41af190f1af7ca89ab3f
-Patch0:		%{name}-target.patch
+Patch0:		xerces-j-target.patch
 URL:		http://xml.apache.org/xerces-j/
 BuildRequires:	ant >= 1.5
 BuildRequires:	jdk >= 1.3
@@ -43,6 +43,7 @@ Summary(pl.UTF-8):	Dokumentacja do Xercesa - analizatora składniowego XML-a w J
 Group:		Documentation
 Requires:	jpackage-utils
 Obsoletes:	xerces-j-doc
+Obsoletes:	xerces-j-javadoc
 
 %description javadoc
 Documentation for Xerces - XML parser for Java.
