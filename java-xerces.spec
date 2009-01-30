@@ -19,7 +19,7 @@ Source1:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-tools.%{version}.tar.g
 Patch0:		xerces-j-target.patch
 URL:		http://xml.apache.org/xerces-j/
 BuildRequires:	ant >= 1.5
-BuildRequires:	gcj
+BuildRequires:	java-gcj-compat
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
@@ -60,7 +60,8 @@ Javadoc pour Xerces.
 
 %build
 required_jars='xml-commons-apis'
-export CLASSPATH=$(build-classpath $required_jars):./tools/xercesImpl.jar:./tools/bin/xjavac.jar
+CLASSPATH=$(build-classpath $required_jars):./tools/xercesImpl.jar:./tools/bin/xjavac.jar
+export CLASSPATH
 
 %ant -Dbuild.compiler=gcj jars javadocs
 
