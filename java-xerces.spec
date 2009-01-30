@@ -1,7 +1,10 @@
+#
+%define	srcname	xerces
+#
 %include	/usr/lib/rpm/macros.java
 Summary:	XML parser for Java
 Summary(pl.UTF-8):	Analizator składniowy XML-a napisany w Javie
-Name:		xerces-j
+Name:		java-xerces
 Version:	2.9.0
 Release:	3
 # appears that portions of the code are on other licenses.
@@ -22,7 +25,9 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	xml-commons
 Requires:	xml-commons
+Provides:	xerces-j
 Provides:	jaxp_parser_impl
+Obsoletes:	xerces-j
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,20 +38,20 @@ XML parser for Java.
 Analizator składniowy XML-a napisany w Javie.
 
 %package javadoc
-Summary:	Documentation for Xerces-J - XML parser for Java
-Summary(pl.UTF-8):	Dokumentacja do Xercesa-J - analizatora składniowego XML-a w Javie
+Summary:	Documentation for Xerces - XML parser for Java
+Summary(pl.UTF-8):	Dokumentacja do Xercesa - analizatora składniowego XML-a w Javie
 Group:		Documentation
 Requires:	jpackage-utils
 Obsoletes:	xerces-j-doc
 
 %description javadoc
-Documentation for Xerces-J - XML parser for Java.
+Documentation for Xerces - XML parser for Java.
 
 %description javadoc -l pl.UTF-8
-Dokumentacja do Xercesa-J - analizatora składniowego XML-a w Javie.
+Dokumentacja do Xercesa - analizatora składniowego XML-a w Javie.
 
 %description javadoc -l fr.UTF-8
-Javadoc pour %{name}.
+Javadoc pour Xerces.
 
 %prep
 %setup -q -n xerces-%(echo %{version} | tr . _) -a1
@@ -68,15 +73,15 @@ ln -sf xerces-j2-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/jaxp_parser_impl.jar
 ln -sf xerces-j2-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/xercesImpl.jar
 
 # javadoc
-install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-cp -a build/docs/javadocs/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
+install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+cp -a build/docs/javadocs/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post javadoc
-ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
+ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
@@ -85,5 +90,5 @@ ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 
 %files javadoc
 %defattr(644,root,root,755)
-%{_javadocdir}/%{name}-%{version}
-%ghost %{_javadocdir}/%{name}
+%{_javadocdir}/%{srcname}-%{version}
+%ghost %{_javadocdir}/%{srcname}
