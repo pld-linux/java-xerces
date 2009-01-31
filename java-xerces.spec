@@ -19,7 +19,7 @@ Source1:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-tools.%{version}.tar.g
 Patch0:		xerces-j-target.patch
 URL:		http://xml.apache.org/xerces-j/
 BuildRequires:	ant >= 1.5
-BuildRequires:	java-gcj-compat
+BuildRequires:	java-gcj-compat-devel
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
