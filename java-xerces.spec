@@ -6,7 +6,7 @@ Summary:	XML parser for Java
 Summary(pl.UTF-8):	Analizator składniowy XML-a napisany w Javie
 Name:		java-xerces
 Version:	2.9.0
-Release:	3
+Release:	4
 # appears that portions of the code are on other licenses.
 # can it all be called "Apache 2.0"?
 License:	Apache v2.0
@@ -18,7 +18,7 @@ Source1:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-tools.%{version}.tar.g
 # Source1-md5:	79d48733b0ab41af190f1af7ca89ab3f
 Patch0:		xerces-j-target.patch
 URL:		http://xml.apache.org/xerces-j/
-BuildRequires:	ant >= 1.5
+BuildRequires:	ant >= 1.7.1-4
 BuildRequires:	java-gcj-compat-devel
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
