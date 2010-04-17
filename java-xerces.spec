@@ -1,7 +1,7 @@
 #
 %bcond_without	javadoc		# don't build javadoc
 %if "%{pld_release}" == "ti"
-%bcond_without	java_sun	# build with gcj
+%bcond_without	java_sun	# build with any jdk present
 %else
 %bcond_with	java_sun	# build with java-sun
 %endif
@@ -26,7 +26,7 @@ Source1:	http://www.apache.org/dist/xerces/j/Xerces-J-tools.%{version}.tar.gz
 Patch0:		xerces-j-target.patch
 URL:		http://xerces.apache.org/xerces-j/
 BuildRequires:	ant >= 1.7.1-4
-%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
+%{!?with_java_sun:BuildRequires:	jdk}
 %{?with_java_sun:BuildRequires:	java-sun}
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm >= 4.4.9-56
