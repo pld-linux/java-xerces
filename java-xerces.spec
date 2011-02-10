@@ -1,4 +1,5 @@
 #
+# Conditional build:
 %bcond_without	javadoc		# don't build javadoc
 
 %define	srcname	xerces
@@ -6,17 +7,17 @@
 Summary:	XML parser for Java
 Summary(pl.UTF-8):	Analizator składniowy XML-a napisany w Javie
 Name:		java-xerces
-Version:	2.10.0
+Version:	2.11.0
 Release:	1
 # appears that portions of the code are on other licenses.
 # can it all be called "Apache 2.0"?
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/xerces/j/Xerces-J-src.%{version}.tar.gz
-# Source0-md5:	c08cd12a8463e426d7ef51483a6e1e95
+# Source0-md5:	d01fc11eacbe43b45681cb85ac112ebf
 # Get Xerces-J-tools to avoid BuildRequires: xerces-j
 Source1:	http://www.apache.org/dist/xerces/j/Xerces-J-tools.%{version}.tar.gz
-# Source1-md5:	108a4a1fb8c665deec7ed2543d16a69f
+# Source1-md5:	50700b3a6558202b056530babf80f1db
 URL:		http://xerces.apache.org/xerces-j/
 BuildRequires:	ant >= 1.7.1-4
 BuildRequires:	java-xml-commons
@@ -89,7 +90,10 @@ ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 %files
 %defattr(644,root,root,755)
 %doc LICENSE* NOTICE* README Readme.html
-%{_javadir}/*.jar
+%{_javadir}/jaxp_parser_impl.jar
+%{_javadir}/xerces-j2-%{version}.jar
+%{_javadir}/xerces-j2.jar
+%{_javadir}/xercesImpl.jar
 
 %if %{with javadoc}
 %files javadoc
