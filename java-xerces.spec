@@ -63,7 +63,7 @@ required_jars='xml-commons-apis'
 CLASSPATH=$(build-classpath $required_jars):./tools/xercesImpl.jar:./tools/bin/xjavac.jar
 export CLASSPATH
 
-%ant jars %{?with_javadoc:javadocs} -Dant.java.version=1.6
+%ant jars %{?with_javadoc:javadocs} -Dant.java.version=1.5
 
 %install
 rm -rf $RPM_BUILD_ROOT
