@@ -8,7 +8,7 @@ Summary:	XML parser for Java
 Summary(pl.UTF-8):	Analizator składniowy XML-a napisany w Javie
 Name:		java-xerces
 Version:	2.11.0
-Release:	1
+Release:	2
 # appears that portions of the code are on other licenses.
 # can it all be called "Apache 2.0"?
 License:	Apache v2.0
