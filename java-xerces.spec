@@ -1,29 +1,34 @@
+#
+# Conditional build:
+%bcond_without	javadoc		# don't build javadoc
+
+%define	srcname	xerces
 %include	/usr/lib/rpm/macros.java
 Summary:	XML parser for Java
 Summary(pl.UTF-8):	Analizator składniowy XML-a napisany w Javie
-Name:		xerces-j
-Version:	2.9.0
-Release:	3
+Name:		java-xerces
+Version:	2.11.0
+Release:	2
 # appears that portions of the code are on other licenses.
 # can it all be called "Apache 2.0"?
 License:	Apache v2.0
-Group:		Applications/Publishing/XML/Java
-Source0:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-src.%{version}.tar.gz
-# Source0-md5:	bd43e57ec7105acc9f13072e0208d445
+Group:		Libraries/Java
+Source0:	http://www.apache.org/dist/xerces/j/Xerces-J-src.%{version}.tar.gz
+# Source0-md5:	d01fc11eacbe43b45681cb85ac112ebf
 # Get Xerces-J-tools to avoid BuildRequires: xerces-j
-Source1:	http://www.apache.org/dist/xml/xerces-j/Xerces-J-tools.%{version}.tar.gz
-# Source1-md5:	79d48733b0ab41af190f1af7ca89ab3f
-Patch0:		%{name}-target.patch
-URL:		http://xml.apache.org/xerces-j/
-BuildRequires:	ant >= 1.5
-BuildRequires:	jdk >= 1.1
+Source1:	http://www.apache.org/dist/xerces/j/Xerces-J-tools.%{version}.tar.gz
+# Source1-md5:	50700b3a6558202b056530babf80f1db
+URL:		http://xerces.apache.org/xerces-j/
+BuildRequires:	ant >= 1.6.5
+BuildRequires:	java-xml-commons
+BuildRequires:	jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
-BuildRequires:	xml-commons
-Requires:	jre >= 1.1
-Requires:	xml-commons
-Provides:	jaxp_parser_impl
+Requires:	java-xml-commons
+Provides:	java(jaxp_parser_impl)
+Provides:	xerces-j
+Obsoletes:	xerces-j
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -34,30 +39,31 @@ XML parser for Java.
 Analizator składniowy XML-a napisany w Javie.
 
 %package javadoc
-Summary:	Documentation for Xerces-J - XML parser for Java
-Summary(pl.UTF-8):	Dokumentacja do Xercesa-J - analizatora składniowego XML-a w Javie
+Summary:	Documentation for Xerces - XML parser for Java
+Summary(pl.UTF-8):	Dokumentacja do Xercesa - analizatora składniowego XML-a w Javie
 Group:		Documentation
 Requires:	jpackage-utils
 Obsoletes:	xerces-j-doc
+Obsoletes:	xerces-j-javadoc
 
 %description javadoc
-Documentation for Xerces-J - XML parser for Java.
+Documentation for Xerces - XML parser for Java.
 
 %description javadoc -l pl.UTF-8
-Dokumentacja do Xercesa-J - analizatora składniowego XML-a w Javie.
+Dokumentacja do Xercesa - analizatora składniowego XML-a w Javie.
 
 %description javadoc -l fr.UTF-8
-Javadoc pour %{name}.
+Javadoc pour Xerces.
 
 %prep
 %setup -q -n xerces-%(echo %{version} | tr . _) -a1
-%patch0 -p1
 
 %build
 required_jars='xml-commons-apis'
-export CLASSPATH=$(build-classpath $required_jars):./tools/xercesImpl.jar:./tools/bin/xjavac.jar
+CLASSPATH=$(build-classpath $required_jars):./tools/xercesImpl.jar:./tools/bin/xjavac.jar
+export CLASSPATH
 
-%ant jars javadocs
+%ant jars %{?with_javadoc:javadocs}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -68,23 +74,30 @@ ln -sf xerces-j2-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/xerces-j2.jar
 ln -sf xerces-j2-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/jaxp_parser_impl.jar
 ln -sf xerces-j2-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/xercesImpl.jar
 
+%if %{with javadoc}
 # javadoc
-install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-cp -a build/docs/javadocs/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
+install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+cp -a build/docs/javadocs/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post javadoc
-ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
+ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
 %doc LICENSE* NOTICE* README Readme.html
-%{_javadir}/*.jar
+%{_javadir}/jaxp_parser_impl.jar
+%{_javadir}/xerces-j2-%{version}.jar
+%{_javadir}/xerces-j2.jar
+%{_javadir}/xercesImpl.jar
 
+%if %{with javadoc}
 %files javadoc
 %defattr(644,root,root,755)
-%{_javadocdir}/%{name}-%{version}
-%ghost %{_javadocdir}/%{name}
+%{_javadocdir}/%{srcname}-%{version}
+%ghost %{_javadocdir}/%{srcname}
+%endif
