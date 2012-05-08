@@ -19,7 +19,7 @@ Source0:	http://www.apache.org/dist/xerces/j/Xerces-J-src.%{version}.tar.gz
 Source1:	http://www.apache.org/dist/xerces/j/Xerces-J-tools.%{version}.tar.gz
 # Source1-md5:	50700b3a6558202b056530babf80f1db
 URL:		http://xerces.apache.org/xerces-j/
-BuildRequires:	ant >= 1.7.1-4
+BuildRequires:	ant >= 1.6.5
 BuildRequires:	java-xml-commons
 BuildRequires:	jdk
 BuildRequires:	jpackage-utils
