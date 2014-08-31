@@ -1,0 +1,45 @@
+diff -urN xerces-2_11_0.orig/src/org/apache/html/dom/HTMLFrameElementImpl.java xerces-2_11_0/src/org/apache/html/dom/HTMLFrameElementImpl.java
+--- xerces-2_11_0.orig/src/org/apache/html/dom/HTMLFrameElementImpl.java	2014-08-31 16:50:03.067203907 +0200
++++ xerces-2_11_0/src/org/apache/html/dom/HTMLFrameElementImpl.java	2014-08-31 16:53:18.193864619 +0200
+@@ -127,6 +127,11 @@
+         setAttribute( "src", src );
+     }
+ 
++    public org.w3c.dom.Document getContentDocument()
++    {
++        throw new UnsupportedOperationException();
++    }
++
+     
+     /**
+      * Constructor requires owner document.
+diff -urN xerces-2_11_0.orig/src/org/apache/html/dom/HTMLIFrameElementImpl.java xerces-2_11_0/src/org/apache/html/dom/HTMLIFrameElementImpl.java
+--- xerces-2_11_0.orig/src/org/apache/html/dom/HTMLIFrameElementImpl.java	2014-08-31 16:55:43.767193510 +0200
++++ xerces-2_11_0/src/org/apache/html/dom/HTMLIFrameElementImpl.java	2014-08-31 16:56:16.483859178 +0200
+@@ -150,6 +150,11 @@
+         setAttribute( "width", width );
+     }
+ 
++    public org.w3c.dom.Document getContentDocument()
++    {
++        throw new UnsupportedOperationException();
++    }
++
+     
+     /**
+      * Constructor requires owner document.
+diff -urN xerces-2_11_0.orig/src/org/apache/html/dom/HTMLObjectElementImpl.java xerces-2_11_0/src/org/apache/html/dom/HTMLObjectElementImpl.java
+--- xerces-2_11_0.orig/src/org/apache/html/dom/HTMLObjectElementImpl.java	2014-08-31 16:55:43.767193510 +0200
++++ xerces-2_11_0/src/org/apache/html/dom/HTMLObjectElementImpl.java	2014-08-31 16:56:29.657192110 +0200
+@@ -239,6 +239,11 @@
+         setAttribute( "width", width );
+     }
+ 
++
++    public org.w3c.dom.Document getContentDocument()
++    {
++        throw new UnsupportedOperationException();
++    }
+     
+     
+     /**

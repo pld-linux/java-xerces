@@ -18,14 +18,15 @@ Source0:	http://www.apache.org/dist/xerces/j/Xerces-J-src.%{version}.tar.gz
 # Get Xerces-J-tools to avoid BuildRequires: xerces-j
 Source1:	http://www.apache.org/dist/xerces/j/Xerces-J-tools.%{version}.tar.gz
 # Source1-md5:	50700b3a6558202b056530babf80f1db
+Patch0:		%{name}-jdk5.patch
 URL:		http://xerces.apache.org/xerces-j/
 BuildRequires:	ant >= 1.6.5
-BuildRequires:	java-xml-commons
+BuildRequires:	java(xml-commons-apis)
 BuildRequires:	jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
-Requires:	java-xml-commons
+Requires:	java(xml-commons-apis)
 Provides:	java(jaxp_parser_impl)
 Provides:	xerces-j
 Obsoletes:	xerces-j
@@ -57,6 +58,7 @@ Javadoc pour Xerces.
 
 %prep
 %setup -q -n xerces-%(echo %{version} | tr . _) -a1
+%patch0 -p1
 
 %build
 required_jars='xml-commons-apis'
