@@ -3,7 +3,6 @@
 %bcond_without	javadoc		# don't build javadoc
 
 %define	srcname	xerces
-%include	/usr/lib/rpm/macros.java
 Summary:	XML parser for Java
 Summary(pl.UTF-8):	Analizator składniowy XML-a napisany w Javie
 Name:		java-xerces
