@@ -57,7 +57,7 @@ Javadoc pour Xerces.
 
 %prep
 %setup -q -n xerces-%(echo %{version} | tr . _) -a1
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 required_jars='xml-commons-apis'
